@@ -35,7 +35,7 @@ const WeatherDay = (props) => {
               </td>)
             )}
           </tr>
-          <tr>
+          <tr className="hide-on-mobile">
             <td>Forecast</td>
             {props.dayData.condition.map((e, idx) => <td title={e.condition} key={idx}>{e.condition}</td>)}
           </tr>

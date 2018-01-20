@@ -85,17 +85,22 @@ class WeatherContainer extends Component {
       days[day] = rotated;
     })
 
-    this.setState({ activeTab: "current", forecast: days, conditions: response.current_observation })
+    this.setState({ activeTab: "current", forecast: days, conditions: response.current_observation, locationData: response.current_observation.display_location })
   }
 
   autocompleteSelect = (value, item) => {
-    this.setState({ value, locationData: item, dropdownItems: [item], error: "", activeTab: "forecast", forecast: null, conditions: null })
+    this.setState({ value, dropdownItems: [item], error: "", activeTab: "forecast", forecast: null, conditions: null })
 
 
     fetchUrlWithCb(`http://api.wunderground.com/api/1d6b5c9311caaa12/conditions/hourly10day/q/zmw:${item.zmw}.json`,
       response => this.transformResponse(response),
       error => {
-        this.setState({ error: error.message, dropdownItems: [] })
+        if (error.message === "forecast is undefined"){
+          this.setState({ error: error.message + " for this location. please try selecting a different location", dropdownItems: [] })
+        }
+        else {
+          this.setState({ error: error.message, dropdownItems: [] })
+        }
       }
     )
 

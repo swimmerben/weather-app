@@ -15,8 +15,7 @@ const WeatherForecast = (props) => {
   if (props.forecastData) {
     return (
       <div style={{ padding: 15, backgroundColor:"#eee", marginTop:5, borderRadius: "3px", border: "1px solid #bdbab9", }}>
-        <div> The place you've selected is: {props.locationData.name} </div>
-        This page contains 10 days worth of weather data:
+        This page contains 10 days worth of weather data for {props.locationData.full}:
         <div>
           {Object.keys(props.forecastData).map(param => {
             return (
