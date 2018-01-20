@@ -19,7 +19,7 @@ const WeatherForecast = (props) => {
         <div>
           {Object.keys(props.forecastData).map(param => {
             return (
-              <WeatherDay dayData={props.forecastData[param]} key={param}/>
+              <WeatherDay scale={props.scale} dayData={props.forecastData[param]} key={param}/>
             )
           })}
         </div>

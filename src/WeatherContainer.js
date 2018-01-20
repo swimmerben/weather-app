@@ -3,6 +3,7 @@ import Autocomplete from 'react-autocomplete'
 import { fetchUrlWithCb } from './FetchHelper'
 import WeatherForecast from './WeatherForecast.js'
 import WeatherCurrent from './WeatherCurrent.js'
+import Toggle from './Toggle.js'
 
 
 class WeatherContainer extends Component {
@@ -13,7 +14,7 @@ class WeatherContainer extends Component {
       locationData: "",
       value: '',
       dropdownItems: [],
-      scale: "F",
+      scale: "C",
       error: "",
     }
 
@@ -24,6 +25,10 @@ class WeatherContainer extends Component {
         this.setState({ error: error.message, dropdownItems: [] })
       }
     )
+  }
+
+  changeScale = (isFarenheit) => {
+    this.setState({scale: isFarenheit ? "F" : "C"})
   }
 
   goToForecast = () => this.setState({ activeTab: "forecast" })
@@ -45,8 +50,8 @@ class WeatherContainer extends Component {
             <a style={{ ...buttonStyle, backgroundColor: this.state.activeTab === "forecast" ? "#eee" : "" }} onClick={this.goToForecast}>Forecast</a>
             <a style={{ ...buttonStyle, backgroundColor: this.state.activeTab === "current" ? "#eee" : "" }} onClick={this.goToCurrent}>Current</a>
             {this.state.activeTab === "forecast" ?
-              <WeatherForecast locationData={this.state.locationData} forecastData={this.state.forecast} /> :
-              <WeatherCurrent locationData={this.state.locationData} currentData={this.state.conditions} />}
+              <WeatherForecast scale={this.state.scale} locationData={this.state.locationData} forecastData={this.state.forecast} /> :
+              <WeatherCurrent scale={this.state.scale} locationData={this.state.locationData} currentData={this.state.conditions} />}
           </div>
         </div>
       )
@@ -95,7 +100,7 @@ class WeatherContainer extends Component {
     fetchUrlWithCb(`http://api.wunderground.com/api/1d6b5c9311caaa12/conditions/hourly10day/q/zmw:${item.zmw}.json`,
       response => this.transformResponse(response),
       error => {
-        if (error.message === "forecast is undefined"){
+        if (error.message === "forecast is undefined") {
           this.setState({ error: error.message + " for this location. please try selecting a different location", dropdownItems: [] })
         }
         else {
@@ -113,11 +118,11 @@ class WeatherContainer extends Component {
     if (value.length === 0) {
       this.setState({ value: "", error: "" })
     } else {
-      let queryUrl = 
-      fetchUrlWithCb(`https://cors-anywhere.herokuapp.com/http://autocomplete.wunderground.com/aq?query=${value}`,
-        places => this.setState({ dropdownItems: places.RESULTS, error: "" }),
-        error => this.setState({ error: error.message, dropdownItems: [] })
-      )
+      let queryUrl =
+        fetchUrlWithCb(`https://cors-anywhere.herokuapp.com/http://autocomplete.wunderground.com/aq?query=${value}`,
+          places => this.setState({ dropdownItems: places.RESULTS, error: "" }),
+          error => this.setState({ error: error.message, dropdownItems: [] })
+        )
 
     }
   }
@@ -130,6 +135,7 @@ class WeatherContainer extends Component {
       <div className="WeatherContainer">
         <div className="autocomplete-wrapper">
           <label htmlFor="location-autocomplete">Type in a Zip Code or City to get started</label>
+
           <Autocomplete
             inputProps={{ id: 'location-autocomplete' }}
             wrapperStyle={{ position: 'relative', display: 'inline-block' }}
@@ -150,6 +156,9 @@ class WeatherContainer extends Component {
               >{item.name}</div>
             )}
           />
+          <div style={{marginTop:5}}>
+            <Toggle onLabel="°F" offLabel="°C" changeHandler={this.changeScale}/>
+          </div>
           <span style={{ color: "red" }}> {this.state.error} </span>
         </div>
         {this.bottomSegment()}

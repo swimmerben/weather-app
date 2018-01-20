@@ -26,10 +26,10 @@ const WeatherDay = (props) => {
         </thead>
         <tbody>
           <tr>
-            <td>Temp (°F)</td>
+            <td>Temp (°{props.scale})</td>
             {props.dayData.temp.map((e, idx) => (
               <td data-label={props.dayData.time[idx].civil} key={idx}>
-                <div data-label={props.dayData.condition[idx].condition}>{e.english}
+                <div data-label={props.dayData.condition[idx].condition}>{props.scale==="F" ? e.english : e.metric}
                 <img style={{ position: "relative", top:4, width:20, height:20}} src={props.dayData.condition[idx].icon_url} alt="conditions" />
                 </div>
               </td>)

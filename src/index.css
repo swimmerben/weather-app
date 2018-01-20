@@ -30,6 +30,7 @@ code {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #cccccc;
+  z-index: 1;
 }
 
 .item {
