@@ -28,7 +28,7 @@ class WeatherContainer extends Component {
   }
 
   changeScale = (isFarenheit) => {
-    this.setState({scale: isFarenheit ? "F" : "C"})
+    this.setState({ scale: isFarenheit ? "F" : "C" })
   }
 
   goToForecast = () => this.setState({ activeTab: "forecast" })
@@ -46,7 +46,7 @@ class WeatherContainer extends Component {
     }
     if (this.state.forecast !== "") {
       return (
-        <div className="center">
+        <div style={{ width: "90%", margin: "auto" }}>
           <div style={{ marginTop: 25 }}>
             <a style={{ ...buttonStyle, backgroundColor: this.state.activeTab === "forecast" ? "#eee" : "" }} onClick={this.goToForecast}>Forecast</a>
             <a style={{ ...buttonStyle, backgroundColor: this.state.activeTab === "current" ? "#eee" : "" }} onClick={this.goToCurrent}>Current</a>
@@ -133,12 +133,24 @@ class WeatherContainer extends Component {
     console.log(this.state);
     return (
 
-      <div className="WeatherContainer">
-        <div className="autocomplete-wrapper">
+      <div style={{
+        backgroundColor: "#DDD",
+        width: "100%",
+        maxWidth: "1300",
+        margin: "auto",
+        height: "auto",
+      }}>
+        <div style={{ width: "90%", margin: "auto" }}>
           <label htmlFor="location-autocomplete">Type in a Zip Code or City to get started</label>
 
           <Autocomplete
-            inputProps={{ id: 'location-autocomplete' }}
+            inputProps={{
+              id: 'location-autocomplete', style: {
+                minWidth: 300,
+                boxSizing: "border-box",
+                width: "90%"
+              }
+            }}
             wrapperStyle={{ position: 'relative', display: 'inline-block' }}
             value={this.state.value}
             items={this.state.dropdownItems}
@@ -146,19 +158,30 @@ class WeatherContainer extends Component {
             onSelect={this.autocompleteSelect}
             onChange={this.autocompleteChange}
             renderMenu={children => (
-              <div className="menu">
+              <div style={{
+                position: "absolute",
+                boxSizing: "border-box",
+                width: "100%",
+                border: "1px solid #cccccc",
+                zIndex: 1,
+              }}>
                 {children}
               </div>
             )}
             renderItem={(item, isHighlighted) => (
               <div
-                className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
+                style={{
+                  padding: "2px 6px",
+                  cursor: isHighlighted ? "" : "default",
+                  backgroundColor: isHighlighted ? "#4095bf" : "white",
+                  color: isHighlighted ? "white" : ""
+                }}
                 key={item.zmw}
               >{item.name}</div>
             )}
           />
-          <div style={{marginTop:5}}>
-            <Toggle onLabel="°F" offLabel="°C" changeHandler={this.changeScale}/>
+          <div style={{ marginTop: 5 }}>
+            <Toggle onLabel="°F" offLabel="°C" changeHandler={this.changeScale} />
           </div>
           <span style={{ color: "red" }}> {this.state.error} </span>
         </div>
