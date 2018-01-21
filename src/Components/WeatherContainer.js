@@ -73,7 +73,7 @@ class WeatherContainer extends Component {
       return e
     })
 
-    Object.keys(days).map(day => {
+    Object.keys(days).forEach(day => {
       let rotated = {
         time: [],
         condition: [],
@@ -81,7 +81,7 @@ class WeatherContainer extends Component {
         humidity: [],
       }
 
-      days[day].map((e) => {
+      days[day].forEach((e) => {
         rotated["time"].push(e.FCTTIME)
         rotated["condition"].push({ condition: e.condition, icon_url: e.icon_url })
         rotated["temp"].push(e.temp)
@@ -97,7 +97,6 @@ class WeatherContainer extends Component {
   autocompleteSelect = (value, item) => {
     this.setState({ value, dropdownItems: [item], error: "", activeTab: "forecast", forecast: null, conditions: null })
 
-
     fetchUrlWithCb(`http://api.wunderground.com/api/1d6b5c9311caaa12/conditions/hourly10day/q/zmw:${item.zmw}.json`,
       response => this.transformResponse(response),
       error => {
@@ -109,9 +108,6 @@ class WeatherContainer extends Component {
         }
       }
     )
-
-    // or you could reset it to a default list again
-    // this.setState({ dropdownItems: getlocation() })
   }
 
   autocompleteChange = (event, value) => {
@@ -119,18 +115,15 @@ class WeatherContainer extends Component {
     if (value.length === 0) {
       this.setState({ value: "", error: "" })
     } else {
-      let queryUrl =
-        fetchUrlWithCb(`https://cors-anywhere.herokuapp.com/http://autocomplete.wunderground.com/aq?query=${value}`,
-          places => this.setState({ dropdownItems: places.RESULTS, error: "" }),
-          error => this.setState({ error: error.message, dropdownItems: [] })
-        )
-
+      fetchUrlWithCb(`https://cors-anywhere.herokuapp.com/http://autocomplete.wunderground.com/aq?query=${value}`,
+        places => this.setState({ dropdownItems: places.RESULTS, error: "" }),
+        error => this.setState({ error: error.message, dropdownItems: [] })
+      )
     }
   }
 
 
   render() {
-    console.log(this.state);
     return (
 
       <div style={{

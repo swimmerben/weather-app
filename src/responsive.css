@@ -83,7 +83,6 @@ tr:hover {background-color:#f5f5f5;}
   }
   .forecast-table tr {
     border-bottom: 3px solid #ddd;
-    display: block;
     margin-bottom: .625em;
   }
   .forecast-table td {

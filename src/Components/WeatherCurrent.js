@@ -17,7 +17,7 @@ const WeatherCurrent = (props) => {
     return (
       <div style={{ ...style, background: "#eee" }}>  The current weather in {props.locationData.full}:
         <div style={style}>
-          <img src={props.currentData.icon_url} />
+          <img src={props.currentData.icon_url} alt=""/>
           Right now the weather in {props.currentData.display_location.full} is {props.currentData.weather} and the temperature is {props.scale === "F" ? props.currentData.temp_f + "°F" : props.currentData.temp_c + "°C"}
           <table>
             <thead>

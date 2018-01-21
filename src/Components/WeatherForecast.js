@@ -3,14 +3,6 @@ import WeatherDay from './WeatherDay.js'
 import LoadingAnimation from './LoadingAnimation.js'
 
 const WeatherForecast = (props) => {
-  let style = {
-    marginTop: "15px",
-    background: "#fff",
-    borderRadius: "3px",
-    border: "1px solid #bdbab9",
-    padding: 15,
-    overflowX: "scroll",
-  }
 
   if (!props.forecastData) {
     return <LoadingAnimation />
