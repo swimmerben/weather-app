@@ -1,4 +1,4 @@
-This project was created with [Create React App](https://github.com/facebookincubator/create-react-app) because I didn't want to spend time configuring all the stuff that comes bundles with create react app
+This project was created with [Create React App](https://github.com/facebookincubator/create-react-app) because I didn't want to spend time configuring a lot of the stuff that comes bundled by default in create react app
 
 
 
