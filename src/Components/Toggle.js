@@ -33,7 +33,8 @@ class Toggle extends Component {
 
 Toggle.propTypes = {
   onLabel: PropTypes.string.isRequired,
-  offLabel: PropTypes.string.isRequired
+  offLabel: PropTypes.string.isRequired,
+  changeHandler: PropTypes.func
 };
 
 export default Toggle

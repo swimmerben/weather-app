@@ -1,5 +1,7 @@
 import React from 'react'
 import LoadingAnimation from './LoadingAnimation.js'
+import PropTypes from 'prop-types';
+
 
 const WeatherCurrent = (props) => {
   let style = {
@@ -46,7 +48,13 @@ const WeatherCurrent = (props) => {
       </div>
     )
   }
-
 }
+
+WeatherCurrent.propTypes = {
+  locationData: PropTypes.object,
+  currentData: PropTypes.object,
+  scale: PropTypes.string.isRequired,
+};
+
 
 export default WeatherCurrent

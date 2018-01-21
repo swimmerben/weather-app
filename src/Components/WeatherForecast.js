@@ -1,9 +1,10 @@
 import React from 'react'
 import WeatherDay from './WeatherDay.js'
 import LoadingAnimation from './LoadingAnimation.js'
+import PropTypes from 'prop-types';
+
 
 const WeatherForecast = (props) => {
-
   if (!props.forecastData) {
     return <LoadingAnimation />
   } else {
@@ -20,7 +21,12 @@ const WeatherForecast = (props) => {
       </div>
     )
   }
-
 }
+
+WeatherForecast.propTypes = {
+  locationData: PropTypes.object,
+  forecastData: PropTypes.object,
+  scale: PropTypes.string.isRequired,
+};
 
 export default WeatherForecast

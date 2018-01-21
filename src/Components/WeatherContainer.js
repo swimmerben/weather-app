@@ -11,7 +11,7 @@ class WeatherContainer extends Component {
     super();
     this.state = {
       activeTab: "",
-      locationData: "",
+      locationData: {},
       value: '',
       dropdownItems: [],
       scale: "F",

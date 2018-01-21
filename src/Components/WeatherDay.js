@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 const WeatherDay = (props) => {
   let style = {
@@ -42,6 +43,11 @@ const WeatherDay = (props) => {
 
   )
 }
+
+WeatherDay.propTypes = {
+  dayData: PropTypes.object,
+  scale: PropTypes.string.isRequired,
+};
 
 
 export default WeatherDay
