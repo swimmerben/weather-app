@@ -1,0 +1,323 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  color: #333;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 200;
+}
+
+.example {
+  padding: 0 25px;
+}
+
+label {
+  display: block;
+}
+
+code {
+  padding: .2em .5em;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.menu {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #cccccc;
+  z-index: 1;
+}
+
+.item {
+  padding: 2px 6px;
+  cursor: default;
+  background-color: white;
+}
+
+.item-highlighted {
+  color: white;
+  background-color: #4095bf;
+}
+
+.item-header {
+  background-color: #eeeeee;
+  color: #454545;
+  font-weight: bold;
+}
+
+input {
+  min-width: 300px;
+  box-sizing: border-box;
+  width:90%;
+}
+.center {
+  width: 90%;
+  margin:auto;
+}
+
+.forecast {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #000;
+  
+}
+
+td {
+  border-right: 1px solid #ccc;
+}
+
+tr:hover {background-color:#f5f5f5;}
+
+
+
+.WeatherContainer {
+  background-color: #DDD;
+  width:100%;
+  max-width: 1300;
+  margin:auto;
+  height: auto;
+}
+
+.autocomplete-wrapper {
+  width:90%;
+  margin:auto
+}
+
+
+/* tablets and below */
+@media only screen and (max-width: 768px) {
+
+
+}
+
+
+.forecast-table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+
+.forecast-table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+.forecast-table tr {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+.forecast-table th,
+.forecast-table td {
+  padding: .625em;
+  text-align: center;
+}
+
+.forecast-table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+  .hide-on-mobile {
+    display:none;
+  }
+
+  .forecast-table {
+    border: 0;
+  }
+  .forecast-table caption {
+    font-size: 1.3em;
+  }
+  .forecast-table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  .forecast-table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  .forecast-table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  .forecast-table td:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a .forecast-table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .forecast-table td>div:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a .forecast-table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    position:relative;
+    left:-5px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .forecast-table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
+
+
+/* infinite loading css */
+#LoadingAnimation-spinner {
+  margin: 100px auto;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+}
+
+#LoadingAnimation-spinner > div {
+  background-color: #333;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+#LoadingAnimation-spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+#LoadingAnimation-spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+#LoadingAnimation-spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+#LoadingAnimation-spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% { 
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+
+/* toggle styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2257ca;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2ab934;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(55px);
+  -ms-transform: translateX(55px);
+  transform: translateX(55px);
+}
+
+.on
+{
+  display: none;
+}
+
+.on, .off
+{
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  font-size: 10px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked + .slider .off
+{display: none;}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;}

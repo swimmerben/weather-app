@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Autocomplete from 'react-autocomplete'
-import { fetchUrlWithCb } from './FetchHelper'
+import { fetchUrlWithCb } from '../Utilities/FetchHelper'
 import WeatherForecast from './WeatherForecast.js'
 import WeatherCurrent from './WeatherCurrent.js'
 import Toggle from './Toggle.js'

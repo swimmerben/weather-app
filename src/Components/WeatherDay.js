@@ -17,7 +17,7 @@ const WeatherDay = (props) => {
     <div style={style}>
       <p>{`${props.dayData.time[0].weekday_name}, ${props.dayData.time[0].month_name} ${props.dayData.time[0].mday} `}</p>
 
-      <table className="forecast">
+      <table className="forecast forecast-table">
         <thead>
           <tr>
             <th>TIME</th>

@@ -2,7 +2,7 @@ import React from 'react'
 import './LoadingAnimation.css'
 
 const LoadingAnimation = () => (
-  <div className="spinner">
+  <div id="LoadingAnimation-spinner">
     <div className="rect1"></div>
     <div className="rect2"></div>
     <div className="rect3"></div>
