@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import './Toggle.css'
 
 class Toggle extends Component {
@@ -21,7 +22,7 @@ class Toggle extends Component {
   render() {
     return (
       <label className="switch">
-        <input onClick={this.handleClick} type="checkbox" id="togBtn" checked={this.state.on}/>
+        <input onClick={this.handleClick} type="checkbox" id="togBtn" defaultChecked={this.state.on}/>
         <div className="slider round">
           <span className="on">{this.props.onLabel}</span>
           <span className="off">{this.props.offLabel}</span>
@@ -30,5 +31,10 @@ class Toggle extends Component {
     )
   }
 }
+
+Toggle.propTypes = {
+  onLabel: PropTypes.string.isRequired,
+  offLabel: PropTypes.string.isRequired
+};
 
 export default Toggle

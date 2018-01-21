@@ -1,12 +1,10 @@
 function checkStatus(response) {
-  console.log("checking status")
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
   const error = new Error(`HTTP Error ${response.statusText}`);
   error.status = response.statusText;
   error.response = response;
-  console.log("got here uh oh")
   throw error;
 }
 
@@ -24,5 +22,4 @@ function fetchUrlWithCb(url, cb, err) {
     .catch(err)
 }
 
-const FetchHelper = { checkStatus, parseJSON , fetchUrlWithCb}
 export {fetchUrlWithCb};

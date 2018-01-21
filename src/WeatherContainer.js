@@ -14,7 +14,7 @@ class WeatherContainer extends Component {
       locationData: "",
       value: '',
       dropdownItems: [],
-      scale: "C",
+      scale: "F",
       error: "",
     }
 
@@ -39,9 +39,10 @@ class WeatherContainer extends Component {
       border: "1px solid #bbb",
       borderBottom: "",
       padding: 15,
-      paddingBottom: 6,
+      paddingBottom: 7,
       margin: 5,
-      marginTop: 15
+      marginTop: 15,
+      cursor: "pointer"
     }
     if (this.state.forecast !== "") {
       return (
