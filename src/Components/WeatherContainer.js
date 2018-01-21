@@ -19,7 +19,7 @@ class WeatherContainer extends Component {
     }
 
     //conveniently autodetect location from ip geolookup
-    fetchUrlWithCb("http://api.wunderground.com/api/1d6b5c9311caaa12/conditions/hourly10day/q/autoip.json",
+    fetchUrlWithCb("//api.wunderground.com/api/1d6b5c9311caaa12/conditions/hourly10day/q/autoip.json",
       response => this.transformResponse(response),
       error => {
         this.setState({ error: error.message, dropdownItems: [] })
@@ -97,7 +97,7 @@ class WeatherContainer extends Component {
   autocompleteSelect = (value, item) => {
     this.setState({ value, dropdownItems: [item], error: "", activeTab: "forecast", forecast: null, conditions: null })
 
-    fetchUrlWithCb(`http://api.wunderground.com/api/1d6b5c9311caaa12/conditions/hourly10day/q/zmw:${item.zmw}.json`,
+    fetchUrlWithCb(`//api.wunderground.com/api/1d6b5c9311caaa12/conditions/hourly10day/q/zmw:${item.zmw}.json`,
       response => this.transformResponse(response),
       error => {
         if (error.message === "forecast is undefined") {
