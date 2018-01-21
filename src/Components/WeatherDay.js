@@ -1,7 +1,6 @@
 import React from 'react'
 
 const WeatherDay = (props) => {
-
   let style = {
     marginTop: "15px",
     background: "#fff",
@@ -10,8 +9,6 @@ const WeatherDay = (props) => {
     padding: 15,
     overflowX: "scroll",
   }
-
-
 
   return (
     <div style={style}>

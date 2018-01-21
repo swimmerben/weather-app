@@ -2,7 +2,6 @@ import React from 'react'
 import LoadingAnimation from './LoadingAnimation.js'
 
 const WeatherCurrent = (props) => {
-
   let style = {
     marginTop: 5,
     background: "#fff",
@@ -12,8 +11,9 @@ const WeatherCurrent = (props) => {
     overflowX: "scroll",
   }
 
-
-  if (props.currentData) {
+  if (!props.currentData) {
+    return <LoadingAnimation />
+  } else {
     return (
       <div style={{ ...style, background: "#eee" }}>  The current weather in {props.locationData.full}:
         <div style={style}>
@@ -45,8 +45,6 @@ const WeatherCurrent = (props) => {
         </div>
       </div>
     )
-  } else {
-    return <LoadingAnimation />
   }
 
 }

@@ -35,7 +35,7 @@ class WeatherContainer extends Component {
   goToCurrent = () => this.setState({ activeTab: "current" })
 
   bottomSegment = () => {
-    let buttonStyle = {
+    const buttonStyle = {
       border: "1px solid #bbb",
       borderBottom: "",
       padding: 15,

@@ -12,21 +12,21 @@ const WeatherForecast = (props) => {
     overflowX: "scroll",
   }
 
-  if (props.forecastData) {
+  if (!props.forecastData) {
+    return <LoadingAnimation />
+  } else {
     return (
-      <div style={{ padding: 15, backgroundColor:"#eee", marginTop:5, borderRadius: "3px", border: "1px solid #bdbab9", }}>
-        This page contains 10 days worth of weather data for {props.locationData.full}:
+      <div style={{ padding: 15, backgroundColor: "#eee", marginTop: 5, borderRadius: "3px", border: "1px solid #bdbab9", }}>
+        This page contains 10 days worth of weather forecast data for {props.locationData.full}:
         <div>
           {Object.keys(props.forecastData).map(param => {
             return (
-              <WeatherDay scale={props.scale} dayData={props.forecastData[param]} key={param}/>
+              <WeatherDay scale={props.scale} dayData={props.forecastData[param]} key={param} />
             )
           })}
         </div>
       </div>
     )
-  } else {
-    return <LoadingAnimation/>
   }
 
 }
